@@ -10,6 +10,9 @@ export class NoteCardComponent implements OnInit {
 
   @Input() title!: string;
   @Input() body!: string;
+  @Input() link!: string;
+
+  @Output('delete') deleteEvent: EventEmitter<void> = new EventEmitter<void>();
 
   @ViewChild('truncator') truncator!: ElementRef<HTMLElement>;
   @ViewChild('bodyText') bodyText!: ElementRef<HTMLElement>;
@@ -42,6 +45,9 @@ export class NoteCardComponent implements OnInit {
     console.log('Body:', this.body);
   }
 
+  onXButtonClick() {
+    this.deleteEvent.emit();
+  }
 
 
 }
